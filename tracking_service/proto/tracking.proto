@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+package tracking;
+
+service TrackingService {
+  rpc UpdateOrderStatus(UpdateStatusRequest) returns (StatusResponse);
+  rpc GetOrderStatus(GetStatusRequest) returns (StatusResponse);
+}
+
+message UpdateStatusRequest {
+  string order_id = 1;
+  string status = 2;
+}
+
+message StatusResponse {
+  string order_id = 1;
+  string status = 2;
+}
+
+message GetStatusRequest {
+  string order_id = 1;
+}

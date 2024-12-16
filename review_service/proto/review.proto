@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package review;
+
+service ReviewService {
+  rpc AddReview(AddReviewRequest) returns (ReviewResponse);
+  rpc GetReviews(GetReviewsRequest) returns (ReviewsResponse);
+}
+
+message AddReviewRequest {
+  string user_id = 1;
+  string product_id = 2;
+  string review_text = 3;
+  int32 rating = 4; // Rating from 1 to 5
+}
+
+message ReviewResponse {
+  string review_id = 1;
+  string message = 2;
+}
+
+message GetReviewsRequest {
+  string product_id = 1;
+}
+
+message ReviewsResponse {
+  repeated Review reviews = 1;
+}
+
+message Review {
+  string review_id = 1;
+  string user_id = 2;
+  string review_text = 3;
+  int32 rating = 4;
+}
